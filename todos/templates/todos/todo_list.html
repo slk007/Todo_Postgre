@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Postgresql</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'todos/styles.css' %}">
+
+</head>
+<body class="bg-light">
+    
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-8 offset-md-2">
+    
+                <div class="card">
+                    <div class="card-header shadow-sm bg-white">
+                        <h1 class="display-5 text-info"><i class="fas fa-check-double">Todos</i></h1>
+                    </div>
+                    <div class="card-body">
+                        
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <form action="{% url 'insert_todo_item' %}" autocomplete="off" method="POST">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="content" placeholder="new todo task">
+                                        <div class="input-group-append text-info">
+                                            <span class="input-group-text bg-white py-0">
+                                                <button type="submit" class="btn btn-sm text-info">
+                                                    <i class="fa fa-plus-circle fa-lg"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            {% for todo in todo_list %}
+                                <li class="list-group-item">{{ todo.content }}
+                                    <form action="{% url 'delete_todo_item' todo.id %}" method="POST" class="float-right form-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger sm-2">x</button>
+                                    </form>
+                                </li>
+
+                            {% empty %}
+                                <li class="list-group-item">
+                                    <span class="font-italic">No item item found.</span>
+                                </li>
+                            {% endfor %}
+                        </ul> 
+                    </div>  
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+</body>
+</html>

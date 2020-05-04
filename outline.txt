@@ -1,0 +1,22 @@
+*Todo_Postgre
+|
++---*todos(app folder)
+|   |
+|   +---*migrations
+|   |
+|   +---*static
+|   |   |---*todos
+|   |   |   |--style.css
+|   |
+|   +---*templates
+|   |   |---*todo
+|   |   |   |---todo_list.html
+|   |
+|   |---models.py
+|   |---urls.py
+|   |---views.py
+|   |
++---* Todo_Postgre
+|   |
+|   |---settings.py
+|   |---urls.py
