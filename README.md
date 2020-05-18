@@ -2,10 +2,11 @@
 
 https://herokudjangopostgretodo.herokuapp.com/
 
+'''
 pip install django-heroku (if heroku shows some error(in ubuntu):sudo apt install libpq-dev)
 pip install gunicorn
 pip install python-decouple
-
+'''
 
 In Setting.py:---------------------------------
 
